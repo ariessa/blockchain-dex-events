@@ -1,0 +1,14 @@
+{
+  "name": "blockchain-dex-events",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ariessa",
+  "license": "MIT",
+  "dependencies": {
+    "web3": "^4.10.0"
+  }
+}
