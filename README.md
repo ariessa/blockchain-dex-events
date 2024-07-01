@@ -14,6 +14,8 @@ Using https://polygon-rpc.com/ RPC node as a service, write the code and RPC cal
 
 The solution can be viewed at [contract_calls_knowledge.js](contract_calls_knowledge/contract_calls_knowledge.js).
 
+<br />
+
 <img src="/contract_calls_knowledge/screenshots/fx_contract_calls_knowledge.png"/>
 
 <br />
@@ -32,7 +34,11 @@ Provide a screenshot for your response.
 
 - The contract address for `USDC/WETH` pool on Uniswap V2 is `0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc`. This can be confirmed by the value of its `token0` and `token1`. The result of function `get_token_pair_details` from [question_1.js](dex_event_logs/question_1/question_1.js) shows that:
 
+<br />
+
 <img src="/dex_event_logs/question_1/screenshots/get_token_pair_details.png"/>
+
+<br />
 
 - The address for `token0` is `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`. This is known as `USDC` on the Ethereum mainnet.
 
@@ -43,9 +49,17 @@ insert here
 
 - In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the contract `UniswapV2Pair` inherits from interface `IUniswapV2Pair`.
 
-<img src="/dex_event_logs/question_1/screenshots/contract_inheritance.png"/>
+<br />
+
+<p align="center">
+<img src="/dex_event_logs/question_1/screenshots/contract_inheritance_diagram.png"/>
+</p>
+
+<img src="/dex_event_logs/question_1/screenshots/uniswap_v2_pair_contract.png"/>
 
 <img src="/dex_event_logs/question_1/screenshots/swap_event_in_contract.png"/>
+
+<br />
 
 This makes the contract `UniswapV2Pair` has the following `Swap` event:
 
@@ -62,13 +76,17 @@ event Swap(
 
 <br />
 
-- In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the `function swap()` inside contract `UniswapV2Pair` will emit `Swap` event upon a successful swap.
+- In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the function `swap()` inside contract `UniswapV2Pair` will emit `Swap` event upon a successful swap.
+
+<br />
 
 <img src="/dex_event_logs/question_1/screenshots/swap_function_in_contract.png"/>
 
 <br />
 
 - Inside [question_1.js](dex_event_logs/question_1/question_1.js), function `get_hex_signature` with the canonical text signature of `Swap(address,uint256,uint256,uint256,uint256,address)` as input results in `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822`. This is the hex signature for `Swap` event.
+
+<br />
 
 <img src="/dex_event_logs/question_1/screenshots/get_hex_signature.png"/>
 
@@ -84,17 +102,23 @@ event Swap(
 Swap(address,uint256,uint256,uint256,uint256,address)
 ```
 
+<br />
+
 <img src="/dex_event_logs/question_1/screenshots/ethereum_signature_database_result.png"/>
 
 <br />
 
 - In [Etherscan's Events tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#events) for the `USDC/WETH` pool, it can be seen that the `event Swap(address,uint256,uint256,uint256,uint256,address)` has `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822` as its event signature. The `topic0` of every event is its event signature in hex.
 
+<br />
+
 <img src="/dex_event_logs/question_1/screenshots/event_logs.png"/>
 
 <br />
 
 - In [Etherscan's Events tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#events) for the `USDC/WETH` pool, filtering the logs by `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822` results in a list of recent swaps.
+
+<br />
 
 <img src="/dex_event_logs/question_1/screenshots/recent_swaps.png"/>
 
@@ -115,6 +139,8 @@ You may use screenshot to show your answers.
 - 25,000 DOMI for 1.154811757668969125 ETH
 - 1.154811757668969125 ETH for 3,184.355095 USDC
 
+<br />
+
 <img src="/dex_event_logs/question_2/screenshots/transaction_details.png"/>
 
 This means that the transaction has 2 `Swap` event logs.
@@ -122,6 +148,8 @@ This means that the transaction has 2 `Swap` event logs.
 <br />
 
 - As expected, in the [Transaction Receipt Event Logs tab on Etherscan](https://etherscan.io/tx/0x5e555836bacad83ac3989dc1ec9600800c7796d19d706f007844dfc45e9703ac/#eventlog), the transaction has 2 `Swap` event logs.
+
+<br />
 
 <img src="/dex_event_logs/question_2/screenshots/tx_event_logs_first_swap.png"/>
 
@@ -133,6 +161,8 @@ This means that the transaction has 2 `Swap` event logs.
 
 - The symbol for `token0` is `USDC` on the Ethereum mainnet.
 - The symbol for `token1` is `WETH` on the Ethereum mainnet.
+
+<br />
 
 <img src="/dex_event_logs/question_2/screenshots/tx_event_logs_second_swap.png"/>
 
@@ -155,6 +185,8 @@ amount0 = 1154811757668969125 / amount0_decimals
 <br />
 
 - Using function `get_event_log_data` from [question_2.js](dex_event_logs/question_2/question_2.js), it can be seen that there is one `Swap` event that swaps 1.15481 WETH to 3184.35 USDC.
+
+<br />
 
 <img src="/dex_event_logs/question_2/screenshots/tx_event_logs_second_swap.png"/>
 
