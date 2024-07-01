@@ -30,7 +30,7 @@ Provide a screenshot for your response.
 
 - The contract address for `USDC/WETH` pool on Uniswap V2 is `0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc`. This can be confirmed by the value of its `token0` and `token1`. The result of function `get_token_pair_details` from [question_1.js](dex_event_logs/question_1/question_1.js) shows that:
 
-    <img src="/dex_event_logs/question_1/get_token_details.png"/>
+    <img src="/dex_event_logs/question_1/screenshots/get_token_pair_details.png"/>
 
     - The address for `token0` is `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`. This is known as USDC on the Ethereum mainnet.
 
@@ -41,9 +41,9 @@ Provide a screenshot for your response.
 
 - In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the contract `UniswapV2Pair` inherits from interface `IUniswapV2Pair`. 
 
-<img src="/dex_event_logs/contract_inheritance.png"/>
+<img src="/dex_event_logs/question_1/screenshots/contract_inheritance.png"/>
 
-This makes the contract `UniswapV2Pair` has the following event:
+This makes the contract `UniswapV2Pair` has the following `Swap` event:
 
 ```
 event Swap(
@@ -56,23 +56,23 @@ event Swap(
 );
 ```
 
-<img src="/dex_event_logs/event_swap_in_contract.png"/>
+<img src="/dex_event_logs/question_1/screenshots/swap_event_in_contract.png"/>
 
 <br />
 
-- In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the `function swap()` inside contract `UniswapV2Pair` will emit `event Swap` upon a successful swap.
+- In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the `function swap()` inside contract `UniswapV2Pair` will emit `Swap` event upon a successful swap.
 
-<img src="/dex_event_logs/question_1/function_swap_in_contract.png"/>
-
-<br />
-
-- Inside [question_1.js](dex_event_logs/question_1/), function `get_hex_signature` with the canonical text signature of `Swap(address,uint256,uint256,uint256,uint256,address)` as input results in `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822`. This is the hex signature for `event Swap`.
-
-<img src="/dex_event_logs/question_1/get_hex_signature.png"/>
+<img src="/dex_event_logs/question_1/screenshots/swap_function_in_contract.png"/>
 
 <br />
 
-- To further confirm that the hex signature for `event Swap` is `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822`, a search at the [Ethereum Signature Database's event signature page](https://www.4byte.directory/event-signatures/?bytes_signature=0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822) can be performed.
+- Inside [question_1.js](dex_event_logs/question_1/), function `get_hex_signature` with the canonical text signature of `Swap(address,uint256,uint256,uint256,uint256,address)` as input results in `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822`. This is the hex signature for `Swap` event.
+
+<img src="/dex_event_logs/question_1/screenshots/get_hex_signature.png"/>
+
+<br />
+
+- To further confirm that the hex signature for `Swap` event is `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822`, a search at the [Ethereum Signature Database's event signature page](https://www.4byte.directory/event-signatures) can be performed.
 
 <br />
 
@@ -82,18 +82,18 @@ event Swap(
 Swap(address,uint256,uint256,uint256,uint256,address)
 ```
 
-<img src="/dex_event_logs/question_1/ethereum_signature_database_result.png"/>
+<img src="/dex_event_logs/question_1/screenshots/ethereum_signature_database_result.png"/>
 
 <br />
 
 - In [Etherscan's Events tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#events) for the `USDC/WETH` pool, it can be seen that the `event Swap(address,uint256,uint256,uint256,uint256,address)` has `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822` as its event signature. The `topic0` of every event is its event signature in hex.
 
-<img src="/dex_event_logs/question_1/event_logs.png"/>
+<img src="/dex_event_logs/question_1/screenshots/event_logs.png"/>
 
 <br />
 
 - In [Etherscan's Events tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#events) for the `USDC/WETH` pool, filtering the logs by `0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822` results in a list of recent swaps.
 
-<img src="/dex_event_logs/question_1/recent_swaps.png"/>
+<img src="/dex_event_logs/question_1/screenshots/recent_swaps.png"/>
 
 <br />
