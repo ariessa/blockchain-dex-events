@@ -166,7 +166,7 @@ This means that the transaction has 2 `Swap` event logs.
 
 <img src="/dex_event_logs/question_2/screenshots/tx_event_logs_second_swap.png"/>
 
-- The data section shows that WETH tokens was swapped for USDC tokens. The amounts are in BigNumber for precision purposes and because Solidity does not support floating numbers.
+- The data section shows that WETH tokens were swapped for USDC tokens. The amounts are in BigNumber for precision purposes and because Solidity does not support floating numbers.
 
 ```
 amount0In: 0
@@ -179,8 +179,10 @@ In order to get a human readable number, the amounts need to be divided by 10 to
 
 For example:
 
+```
 amount0_decimals = (10 ** 18)
 amount0 = 1154811757668969125 / amount0_decimals
+```
 
 <br />
 
@@ -188,6 +190,6 @@ amount0 = 1154811757668969125 / amount0_decimals
 
 <br />
 
-<img src="/dex_event_logs/question_2/screenshots/tx_event_logs_second_swap.png"/>
+<img src="/dex_event_logs/question_2/screenshots/fx_get_event_log_data.png"/>
 
 <br />
