@@ -4,9 +4,11 @@
 
 **Question**
 
-Using https://polygon-rpc.com/ RPC node as a service, write the code and RPC call to obtain totalSupply of the MANA token issued on the Polygon (MATIC) blockchain. You may consider using the ERC-20 ABI for your solution.
+Using https://polygon-rpc.com/ RPC node as a service, write the code and RPC call to obtain totalSupply of the MANA token issued on the Polygon (MATIC) blockchain. 
 
-\*\* You may approach the above natively or with a library such as Ethereum.rb, web3js, or ethers.
+You may consider using the ERC-20 ABI for your solution.
+
+You may approach the above natively or with a library such as Ethereum.rb, web3js, or ethers.
 
 <br/>
 
@@ -191,5 +193,27 @@ amount0 = 1154811757668969125 / amount0_decimals
 <br />
 
 <img src="/dex_event_logs/question_2/screenshots/fx_get_event_log_data.png"/>
+
+<br />
+
+### Question 3
+
+Quickswap, a DEX on Polygon (MATIC) allows users to swap two assets as a trade. 
+
+For every swap transaction that is recorded on the blockchain, a swap event is emitted and stored in the network with this hash ID 0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822. 
+
+Write the RPC API call to get all the swap events that were emitted for the block #26444465. 
+
+Use https://polygon-rpc.com/ RPC node as a service.
+
+<br />
+
+**Solution**
+
+The solution can be viewed at [question_3.js](dex_event_logs/question_3/question_3.js).
+
+<br />
+
+<img src="/dex_event_logs/question_3/screenshots/fx_get_swap_events.png"/>
 
 <br />

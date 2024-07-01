@@ -6,6 +6,7 @@ const {
   get_abi_parameters,
   get_token_pair_details,
   truncate_number,
+  get_hex_signature,
 } = require("../../lib/utils");
 const {
   swap_event_text_signature,
@@ -42,12 +43,11 @@ async function get_event_log_data(tx_hash, pool_address, pool_abi, event_name) {
     for (let i = 0; i < get_tx_receipt_logs.length; i++) {
       let input_amount;
       let output_amount;
-      let log_index;
       let log = get_tx_receipt_logs[i];
 
       if (
         log.topics[0] ===
-        web3.eth.abi.encodeEventSignature(swap_event_text_signature)
+        get_hex_signature(swap_event_text_signature)
       ) {
         // Remove topic0 as it's a non-anonymous event
         log.topics.shift();
