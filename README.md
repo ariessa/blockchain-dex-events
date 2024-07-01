@@ -6,7 +6,7 @@
 
 Using https://polygon-rpc.com/ RPC node as a service, write the code and RPC call to obtain totalSupply of the MANA token issued on the Polygon (MATIC) blockchain. You may consider using the ERC-20 ABI for your solution.
 
-\*\* You may approach the above natively or with a library such as Ethereum.rb, web3js, or ethers
+\*\* You may approach the above natively or with a library such as Ethereum.rb, web3js, or ethers.
 
 <br/>
 
@@ -34,33 +34,33 @@ Provide a screenshot for your response.
 
 <img src="/dex_event_logs/question_1/screenshots/get_token_pair_details.png"/>
 
-    - The address for `token0` is `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`. This is known as `USDC` on the Ethereum mainnet.
+- The address for `token0` is `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`. This is known as `USDC` on the Ethereum mainnet.
 
-    - The address for `token1` is `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`. This is known as `WETH` on the Ethereum mainnet.
-    insert here
+- The address for `token1` is `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`. This is known as `WETH` on the Ethereum mainnet.
+insert here
 
 <br />
 
 - In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the contract `UniswapV2Pair` inherits from interface `IUniswapV2Pair`.
 
-      <img src="/dex_event_logs/question_1/screenshots/contract_inheritance.png"/>
+<img src="/dex_event_logs/question_1/screenshots/contract_inheritance.png"/>
 
-      <img src="/dex_event_logs/question_1/screenshots/swap_event_in_contract.png"/>
+<img src="/dex_event_logs/question_1/screenshots/swap_event_in_contract.png"/>
 
-      This makes the contract `UniswapV2Pair` has the following `Swap` event:
+This makes the contract `UniswapV2Pair` has the following `Swap` event:
 
-      ```
-      event Swap(
-          address indexed sender,
-          uint amount0In,
-          uint amount1In,
-          uint amount0Out,
-          uint amount1Out,
-          address indexed to
-      );
-      ```
+```
+event Swap(
+    address indexed sender,
+    uint amount0In,
+    uint amount1In,
+    uint amount0Out,
+    uint amount1Out,
+    address indexed to
+);
+```
 
-  <br />
+<br />
 
 - In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the `function swap()` inside contract `UniswapV2Pair` will emit `Swap` event upon a successful swap.
 
@@ -112,12 +112,12 @@ You may use screenshot to show your answers.
 
 - In the [Transaction Details page on Etherscan](https://etherscan.io/tx/0x5e555836bacad83ac3989dc1ec9600800c7796d19d706f007844dfc45e9703ac), it can be seen that the transaction involves 2 token swaps:
 
-  - 25,000 DOMI for 1.154811757668969125 ETH
-  - 1.154811757668969125 ETH for 3,184.355095 USDC
+- 25,000 DOMI for 1.154811757668969125 ETH
+- 1.154811757668969125 ETH for 3,184.355095 USDC
 
-    <img src="/dex_event_logs/question_2/screenshots/transaction_details.png"/>
+<img src="/dex_event_logs/question_2/screenshots/transaction_details.png"/>
 
-  This means that the transaction has 2 `Swap` event logs.
+This means that the transaction has 2 `Swap` event logs.
 
 <br />
 
@@ -131,26 +131,26 @@ You may use screenshot to show your answers.
 
 - In the [Transaction Receipt Event Logs tab on Etherscan](https://etherscan.io/tx/0x5e555836bacad83ac3989dc1ec9600800c7796d19d706f007844dfc45e9703ac/#eventlog), the log with index 15 is a Swap event from [USDC/WETH Uniswap V2 pool](https://etherscan.io/address/0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc). It can be seen that the pool swaps `token1` with `token0`.
 
-  - The symbol for `token0` is `USDC` on the Ethereum mainnet.
-  - The symbol for `token1` is `WETH` on the Ethereum mainnet.
+- The symbol for `token0` is `USDC` on the Ethereum mainnet.
+- The symbol for `token1` is `WETH` on the Ethereum mainnet.
 
 <img src="/dex_event_logs/question_2/screenshots/tx_event_logs_second_swap.png"/>
 
-    - The data section shows that WETH tokens was swapped for USDC tokens. The amounts are in BigNumber for precision purposes and because Solidity does not support floating numbers.
+- The data section shows that WETH tokens was swapped for USDC tokens. The amounts are in BigNumber for precision purposes and because Solidity does not support floating numbers.
 
-    ```
-    amount0In: 0
-    amount1In: 1154811757668969125
-    amount0Out: 3184355095
-    amount1Out: 0
-    ```
+```
+amount0In: 0
+amount1In: 1154811757668969125
+amount0Out: 3184355095
+amount1Out: 0
+```
 
-    In order to get a human readable number, the amounts need to be divided by 10 to the power of its decimals.
+In order to get a human readable number, the amounts need to be divided by 10 to the power of its decimals.
 
-    For example:
+For example:
 
-    amount0_decimals = (10 ** 18)
-    amount0 = 1154811757668969125 / amount0_decimals
+amount0_decimals = (10 ** 18)
+amount0 = 1154811757668969125 / amount0_decimals
 
 <br />
 
