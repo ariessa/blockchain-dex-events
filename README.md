@@ -141,7 +141,7 @@ You may use screenshot to show your answers.
 
 <br />
 
-<img src="/dex_event_logs/question_2/screenshots/transaction_details.png"/>
+<img src="/dex_event_logs/question_2/screenshots/tx_details.png"/>
 
 This means that the transaction has 2 `Swap` event logs.
 
