@@ -41,23 +41,22 @@ Provide a screenshot for your response.
 
 - In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the contract `UniswapV2Pair` inherits from interface `IUniswapV2Pair`. 
 
-<img src="/dex_event_logs/question_1/screenshots/contract_inheritance.png"/>
+    <img src="/dex_event_logs/question_1/screenshots/contract_inheritance.png"/>
 
-This makes the contract `UniswapV2Pair` has the following `Swap` event:
+    <img src="/dex_event_logs/question_1/screenshots/swap_event_in_contract.png"/>
 
-```
-event Swap(
-    address indexed sender,
-    uint amount0In,
-    uint amount1In,
-    uint amount0Out,
-    uint amount1Out,
-    address indexed to
-);
-```
+    This makes the contract `UniswapV2Pair` has the following `Swap` event:
 
-<img src="/dex_event_logs/question_1/screenshots/swap_event_in_contract.png"/>
-
+    ```
+    event Swap(
+        address indexed sender,
+        uint amount0In,
+        uint amount1In,
+        uint amount0Out,
+        uint amount1Out,
+        address indexed to
+    );
+    ```
 <br />
 
 - In [Etherscan's Contract tab](https://etherscan.io/address/0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc#code) for the `USDC/WETH` pool, it can be seen that the `function swap()` inside contract `UniswapV2Pair` will emit `Swap` event upon a successful swap.
