@@ -138,8 +138,8 @@ You may use screenshot to show your answers.
 
 - In the [Transaction Details page on Etherscan](https://etherscan.io/tx/0x5e555836bacad83ac3989dc1ec9600800c7796d19d706f007844dfc45e9703ac), it can be seen that the transaction involves 2 token swaps:
 
-- 25,000 DOMI for 1.154811757668969125 ETH
-- 1.154811757668969125 ETH for 3,184.355095 USDC
+    - 25,000 DOMI for 1.154811757668969125 ETH
+    - 1.154811757668969125 ETH for 3,184.355095 USDC
 
 <br />
 
