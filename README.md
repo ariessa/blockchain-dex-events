@@ -217,3 +217,45 @@ The solution can be viewed at [question_3.js](dex_event_logs/question_3/question
 <img src="/dex_event_logs/question_3/screenshots/fx_get_swap_events.png"/>
 
 <br />
+
+### Question 4
+
+When using the Quickswap DEX, we noticed that the price impact is -42.09% when we increase the size of the trade. What does price impact mean, why is it important, the math behind the price impact. Include as many details as you can to support your explanation.
+
+<br />
+
+**Solution**
+
+In the context of decentralised exchange (DEX), price impact refers to the change in the market price of an asset caused by the execution of a trade. It is usually presented in the form of percentage or decimal value. 
+
+There are two kinds of price impact:
+
+- Positive price impact - increase in price for buys, decrease for sells
+- Negative price impact - decrease in price for buys, increase for sells
+
+<br />
+
+Price impact is important for the following reasons:
+
+- It helps traders to trade efficiently without causing significant price changes
+- It indicates the impact of a trade to the market.
+- It helps traders to manage risks associated with large trades that may impact market prices unfavorably.
+
+<br />
+
+It is calculated as follows:
+
+p_before = price of the asset before trade
+p_after = price of the asset after trade
+
+price impact (%) = (p_after - p_before) / p_before * 100;
+
+<br />
+
+Decentralised exchanges like Quickswap provides an estimated or calculated price impact to users before they confirm a swap transaction.
+
+<br />
+
+<img src="/dex_event_logs/question_4/screenshots/estimated_price_impact.png"/>
+
+<br />
