@@ -2,7 +2,7 @@ const { Web3 } = require("web3");
 const web3 = new Web3("https://polygon-rpc.com");
 
 const erc20_abi = require("../lib/abi/erc20");
-const { mana_token_address } = require("../lib/constants");
+const { mana_token_address_polygon } = require("../lib/constants");
 
 async function total_supply(token_abi, token_address) {
   const token_contract = new web3.eth.Contract(token_abi, token_address);
@@ -26,6 +26,6 @@ async function total_supply(token_abi, token_address) {
   return total_supply.toLocaleString();
 }
 
-total_supply(erc20_abi, mana_token_address).then((res) =>
+total_supply(erc20_abi, mana_token_address_polygon).then((res) =>
   console.log(`\nTotal supply of MANA token on Polygon Mainnet: ${res}\n`)
 );

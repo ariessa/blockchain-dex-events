@@ -10,7 +10,7 @@ const {
 } = require("../../lib/utils");
 const {
   swap_event_text_signature,
-  usdc_weth_pool_address,
+  usdc_weth_pool_address_ethereum,
 } = require("../../lib/constants");
 
 const tx_hash =
@@ -45,10 +45,7 @@ async function get_event_log_data(tx_hash, pool_address, pool_abi, event_name) {
       let output_amount;
       let log = get_tx_receipt_logs[i];
 
-      if (
-        log.topics[0] ===
-        get_hex_signature(swap_event_text_signature)
-      ) {
+      if (log.topics[0] === get_hex_signature(swap_event_text_signature)) {
         // Remove topic0 as it's a non-anonymous event
         log.topics.shift();
 
@@ -89,6 +86,13 @@ async function get_event_log_data(tx_hash, pool_address, pool_abi, event_name) {
   return result;
 }
 
-get_event_log_data(tx_hash, usdc_weth_pool_address, pool_abi, "Swap").then((res) => {
-  console.log(`\n${res[5]} event with log index of ${res[4]}, swapped ${res[0]} ${res[2]} to ${res[1]} ${res[3]}\n`);
+get_event_log_data(
+  tx_hash,
+  usdc_weth_pool_address_ethereum,
+  pool_abi,
+  "Swap"
+).then((res) => {
+  console.log(
+    `\n${res[5]} event with log index of ${res[4]}, swapped ${res[0]} ${res[2]} to ${res[1]} ${res[3]}\n`
+  );
 });
