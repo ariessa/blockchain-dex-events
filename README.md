@@ -245,10 +245,12 @@ Price impact is important for the following reasons:
 
 It is calculated as follows:
 
+```
 p_before = price of the asset before trade
 p_after = price of the asset after trade
 
 price impact (%) = (p_after - p_before) / p_before * 100;
+```
 
 <br />
 
